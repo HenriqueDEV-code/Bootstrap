@@ -1,0 +1,490 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Bootstrap 5 Guia Didático</title>
+  <meta name="description" content="Site didático, prático e manipulável sobre Bootstrap 5.x em português. Aprenda com exemplos, cheatsheet e playgrounds.">
+  <!-- Bootstrap 5.x via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <!-- Bootstrap Icons via CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Estilos customizados (leve, não conflita com Bootstrap) -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNavbar" data-bs-offset="80" tabindex="0">
+<!--
+  Navbar fixa (sticky), responsiva, com collapse no mobile e Scrollspy.
+  ARIA e foco acessível. Links para todas as páginas.
+-->
+<nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow-sm" aria-label="Navegação principal">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="index.html">
+      <span class="text-light"><i class="bi bi-bootstrap-fill me-1"></i>Bootstrap 5 Guia</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+      aria-controls="navbarContent" aria-expanded="false" aria-label="Alternar navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <!-- aria-current="page" destaca a página atual -->
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="index.html">Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="grid.html">Grid</a></li>
+        <li class="nav-item"><a class="nav-link" href="components.html">Componentes</a></li>
+        <li class="nav-item"><a class="nav-link" href="utilities.html">Utilitários</a></li>
+        <li class="nav-item"><a class="nav-link" href="forms.html">Formulários</a></li>
+        <li class="nav-item"><a class="nav-link" href="plugins.html">Plugins JS</a></li>
+        <li class="nav-item"><a class="nav-link" href="theming.html">Theming</a></li>
+      </ul>
+      <!-- Botão de alternância de tema (light/dark) -->
+      <button id="themeToggle" class="btn btn-outline-light btn-sm me-2" aria-label="Alternar tema">
+        <span class="bi bi-moon"></span> <span class="d-none d-lg-inline">Tema</span>
+      </button>
+      <!-- Botão Voltar ao topo (aparece após rolar) -->
+      <a href="#topo" class="btn btn-light btn-sm visually-hidden-focusable" id="voltarTopo" aria-label="Voltar ao topo">↑ Topo</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container-lg py-5" id="topo">
+  <!-- Introdução -->
+  <section id="introducao" class="pt-5 mt-4">
+    <h1 class="display-4 fw-bold mb-3">Bootstrap 5 Guia Didático</h1>
+    <p class="lead">Aprenda Bootstrap 5.x de forma prática, visual e manipulável! Este site traz exemplos reais, cheatsheet, playgrounds e dicas para turbinar seu front-end.</p>
+    <div class="alert alert-info" role="alert">
+      <strong>O que é Bootstrap?</strong><br>
+      Bootstrap é um framework CSS open source para criar sites responsivos e modernos rapidamente, usando classes utilitárias e componentes prontos.
+    </div>
+    <ul>
+      <li><strong>Mobile-first</strong> e responsivo por padrão</li>
+      <li>Componentes prontos, personalizáveis e acessíveis</li>
+      <li>Fácil de usar: só incluir o CSS/JS e sair usando</li>
+      <li>Ótimo para prototipagem e projetos reais</li>
+    </ul>
+    <div class="row g-3 mt-2">
+      <div class="col-md-6">
+        <div class="alert alert-success mb-0">
+          <i class="bi bi-check-circle-fill me-1"></i>
+          <strong>Prós:</strong>
+          <ul class="mb-0">
+            <li>Rápido para começar</li>
+            <li>Documentação e comunidade enormes</li>
+            <li>Consistência visual e responsiva</li>
+            <li>Plugins JS prontos (modal, toast, etc.)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="alert alert-warning mb-0">
+          <i class="bi bi-exclamation-triangle-fill me-1"></i>
+          <strong>Limites:</strong>
+          <ul class="mb-0">
+            <li>Visual padrão pode ficar "genérico" se não personalizar</li>
+            <li>Nem todo componente é 100% acessível sem ajustes</li>
+            <li>Para projetos muito customizados, pode exigir overrides</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Instalação -->
+  <section id="instalacao" class="pt-5">
+    <h2 class="h3 mb-3">Como instalar o Bootstrap</h2>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <div class="card border-primary h-100">
+          <div class="card-body">
+            <h3 class="h5"><i class="bi bi-cloud-download me-1"></i>Via CDN (mais fácil)</h3>
+            <p>Inclua estes links no <code>&lt;head&gt;</code> do seu HTML:</p>
+            <pre class="mb-2"><code class="language-html">&lt;link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet"&gt;
+&lt;script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js"&gt;&lt;/script&gt;
+</code></pre>
+            <div class="alert alert-secondary p-2 mb-0">
+              <strong>Dica:</strong> O <code>bundle.min.js</code> já inclui todos os plugins JS do Bootstrap.
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="card border-secondary h-100">
+          <div class="card-body">
+            <h3 class="h5"><i class="bi bi-terminal me-1"></i>Via npm (projetos maiores)</h3>
+            <p>Instale via terminal:</p>
+            <pre class="mb-2"><code class="language-bash">npm install bootstrap</code></pre>
+            <p>Depois, importe no seu JS/CSS:</p>
+            <pre class="mb-2"><code class="language-js">// JS
+import 'bootstrap/dist/js/bootstrap.bundle.min.js';
+// CSS
+import 'bootstrap/dist/css/bootstrap.min.css';</code></pre>
+            <div class="alert alert-secondary p-2 mb-0">
+              <strong>Dica:</strong> Use npm + bundlers (Webpack, Vite) para projetos customizados.
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-info mt-4">
+      <i class="bi bi-lightbulb me-1"></i>
+      <strong>Copie e cole!</strong> Os trechos acima funcionam direto no seu projeto.
+    </div>
+  </section>
+
+  <!-- Cheatsheet / Sumário de Utilitários -->
+  <section id="cheatsheet" class="pt-5">
+    <h2 class="h3 mb-3">Cheatsheet de Utilitários</h2>
+    <p class="mb-4">Principais classes utilitárias do Bootstrap para acelerar seu layout. <span class="badge bg-success">Copie e experimente!</span></p>
+    <div class="row g-4">
+      <div class="col-md-6">
+        <h3 class="h6">Espaçamento</h3>
+        <ul class="list-unstyled mb-2">
+          <li><code>m-*, p-*</code> — margin/padding</li>
+          <li><code>mx-*, my-*</code> — eixo X/Y</li>
+          <li><code>gap-*</code> — espaçamento em grids/flex</li>
+        </ul>
+        <div class="d-flex gap-2 mb-2">
+          <!-- .p-2: padding 0.5rem; .bg-primary: fundo azul -->
+          <div class="bg-primary text-white p-2 rounded">p-2</div>
+          <!-- .p-3: padding 1rem; .bg-secondary: fundo cinza -->
+          <div class="bg-secondary text-white p-3 rounded">p-3</div>
+        </div>
+        <small class="text-muted">Aumente ou reduza o espaçamento mudando o número (0 a 5).</small>
+      </div>
+      <div class="col-md-6">
+        <h3 class="h6">Tipografia</h3>
+        <ul class="list-unstyled mb-2">
+          <li><code>fw-bold</code> — negrito</li>
+          <li><code>fs-1</code> a <code>fs-6</code> — tamanho da fonte</li>
+          <li><code>lh-1</code> — altura da linha</li>
+          <li><code>text-*</code> — cor do texto</li>
+          <li><code>lead</code> — destaque em parágrafos</li>
+        </ul>
+        <p class="lead text-primary mb-1">Texto de destaque com <code>.lead</code> e <code>.text-primary</code></p>
+      </div>
+    </div>
+    <div class="row g-4 mt-2">
+      <div class="col-md-6">
+        <h3 class="h6">Display & Flex</h3>
+        <ul class="list-unstyled mb-2">
+          <li><code>d-flex</code>, <code>flex-*</code></li>
+          <li><code>justify-content-*</code>, <code>align-items-*</code></li>
+          <li><code>order-*</code></li>
+        </ul>
+        <div class="d-flex justify-content-between mb-2">
+          <span class="bg-light border px-2 rounded">Início</span>
+          <span class="bg-light border px-2 rounded">Meio</span>
+          <span class="bg-light border px-2 rounded">Fim</span>
+        </div>
+        <small class="text-muted">Flexbox para alinhar e ordenar elementos facilmente.</small>
+      </div>
+      <div class="col-md-6">
+        <h3 class="h6">Cores & Fundos</h3>
+        <ul class="list-unstyled mb-2">
+          <li><code>text-*</code>, <code>bg-*</code></li>
+          <li><code>link-*</code>, <code>opacity-*</code></li>
+        </ul>
+        <div class="d-flex gap-2 mb-2">
+          <span class="text-danger">text-danger</span>
+          <span class="bg-warning text-dark px-2 rounded">bg-warning</span>
+        </div>
+        <small class="text-muted">Use as classes para aplicar cores rapidamente.</small>
+      </div>
+    </div>
+    <div class="row g-4 mt-2">
+      <div class="col-md-6">
+        <h3 class="h6">Bordas & Sombras</h3>
+        <ul class="list-unstyled mb-2">
+          <li><code>border</code>, <code>border-*</code></li>
+          <li><code>rounded-*</code></li>
+          <li><code>shadow</code>, <code>shadow-*</code></li>
+        </ul>
+        <div class="d-flex gap-2 mb-2">
+          <div class="border rounded p-2">Borda arredondada</div>
+          <div class="shadow-sm p-2 bg-light rounded">Sombra leve</div>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <h3 class="h6">Tamanhos & Posição</h3>
+        <ul class="list-unstyled mb-2">
+          <li><code>w-*</code>, <code>h-*</code></li>
+          <li><code>position-*</code>, <code>top-*</code>, <code>start-*</code>, <code>z-*</code></li>
+        </ul>
+        <div class="position-relative" style="height: 60px;">
+          <div class="position-absolute top-0 start-50 translate-middle-x bg-info text-white px-2 rounded">Posicionado</div>
+        </div>
+      </div>
+    </div>
+    <div class="row g-4 mt-2">
+      <div class="col-md-6">
+        <h3 class="h6">Helpers</h3>
+        <ul class="list-unstyled mb-2">
+          <li><code>ratio</code> — proporção de elementos</li>
+          <li><code>stretched-link</code> — link expandido</li>
+          <li><code>visually-hidden</code> — acessibilidade</li>
+          <li><code>clearfix</code> — limpar floats</li>
+        </ul>
+        <div class="ratio ratio-16x9 mb-2">
+          <!-- .ratio: vídeo responsivo -->
+          <iframe src="https://www.youtube.com/embed/5GcQtLDGXy8" title="Exemplo de vídeo" allowfullscreen loading="lazy"></iframe>
+        </div>
+        <small class="text-muted">Use <code>.ratio</code> para vídeos responsivos.</small>
+      </div>
+      <div class="col-md-6">
+        <h3 class="h6">Cards alinhados com Grid/Flex</h3>
+        <div class="row row-cols-1 row-cols-md-2 g-2">
+          <div class="col">
+            <div class="card h-100">
+              <div class="card-body">
+                <h5 class="card-title">Card 1</h5>
+                <p class="card-text">Exemplo de card usando grid.</p>
+              </div>
+            </div>
+          </div>
+          <div class="col d-flex">
+            <div class="card flex-fill">
+              <div class="card-body">
+                <h5 class="card-title">Card 2</h5>
+                <p class="card-text">Alinhado com <code>d-flex flex-fill</code>.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <small class="text-muted">Cards responsivos e alinhados facilmente.</small>
+      </div>
+    </div>
+    <div class="alert alert-secondary mt-4">
+      <strong>Explore mais:</strong> Veja exemplos completos em
+      <a href="components.html" class="alert-link">Componentes</a>,
+      <a href="utilities.html" class="alert-link">Utilitários</a>,
+      <a href="forms.html" class="alert-link">Formulários</a> e
+      <a href="plugins.html" class="alert-link">Plugins JS</a>.
+    </div>
+    <div class="alert alert-warning mt-3">
+      <i class="bi bi-exclamation-circle me-1"></i>
+      <strong>Como ler classes Bootstrap?</strong>
+      <ul class="mb-0">
+        <li><code>container</code>: largura fixa centralizada</li>
+        <li><code>row</code>: linha de grid</li>
+        <li><code>col-*</code>: coluna (12 por linha)</li>
+        <li><code>gap-*</code>: espaçamento entre colunas/linhas</li>
+        <li><code>d-flex</code>: display flex</li>
+        <li><code>justify-content-*</code>: alinhamento horizontal</li>
+        <li><code>align-items-*</code>: alinhamento vertical</li>
+        <li><code>m-*/p-*</code>: margin/padding</li>
+        <li><code>bg-*/text-*</code>: cor de fundo/texto</li>
+        <li><code>rounded</code>: cantos arredondados</li>
+        <li><code>shadow</code>: sombra</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Sumário de páginas -->
+  <section id="sumario" class="pt-5">
+    <h2 class="h3 mb-3">Sumário do Guia</h2>
+    <div class="row row-cols-1 row-cols-md-2 g-3">
+      <div class="col">
+        <a href="grid.html" class="card h-100 text-decoration-none border-primary border-2">
+          <div class="card-body">
+            <h3 class="h5 card-title"><i class="bi bi-grid-1x2-fill me-1"></i>Grid</h3>
+            <p class="card-text text-muted">Sistema de containers, rows, cols, breakpoints e playground interativo.</p>
+          </div>
+        </a>
+      </div>
+      <div class="col">
+        <a href="components.html" class="card h-100 text-decoration-none border-success border-2">
+          <div class="card-body">
+            <h3 class="h5 card-title"><i class="bi bi-box-seam me-1"></i>Componentes</h3>
+            <p class="card-text text-muted">Navbar, cards, buttons, accordion, alerts, modals e mais, com exemplos e notas.</p>
+          </div>
+        </a>
+      </div>
+      <div class="col">
+        <a href="utilities.html" class="card h-100 text-decoration-none border-info border-2">
+          <div class="card-body">
+            <h3 class="h5 card-title"><i class="bi bi-tools me-1"></i>Utilitários</h3>
+            <p class="card-text text-muted">Espaçamento, tipografia, display, cores, helpers e playground de classes.</p>
+          </div>
+        </a>
+      </div>
+      <div class="col">
+        <a href="forms.html" class="card h-100 text-decoration-none border-warning border-2">
+          <div class="card-body">
+            <h3 class="h5 card-title"><i class="bi bi-ui-checks-grid me-1"></i>Formulários</h3>
+            <p class="card-text text-muted">Campos, layout, validação visual e JS, exemplo de contato completo.</p>
+          </div>
+        </a>
+      </div>
+      <div class="col">
+        <a href="plugins.html" class="card h-100 text-decoration-none border-danger border-2">
+          <div class="card-body">
+            <h3 class="h5 card-title"><i class="bi bi-lightning-charge-fill me-1"></i>Plugins JS</h3>
+            <p class="card-text text-muted">Modal, tooltip, toast, offcanvas, collapse, carousel e inicialização via JS.</p>
+          </div>
+        </a>
+      </div>
+      <div class="col">
+        <a href="theming.html" class="card h-100 text-decoration-none border-dark border-2">
+          <div class="card-body">
+            <h3 class="h5 card-title"><i class="bi bi-palette-fill me-1"></i>Theming</h3>
+            <p class="card-text text-muted">Light/Dark, CSS variables, personalização de cores e overrides seguros.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="alert alert-info mt-4">
+      <i class="bi bi-bookmark-star me-1"></i>
+      <strong>Dica:</strong> Use o menu fixo para navegar entre as páginas e explore os exemplos interativos!
+    </div>
+  </section>
+</main>
+<section class="mt-5">
+  <h2 class="h4 mb-3"><i class="bi bi-link-45deg me-1"></i>Páginas Disponíveis</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <a href="components.html" class="text-decoration-none">
+        <div class="card h-100 border-success border-2">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-box-seam me-1 text-success"></i>Componentes</h5>
+            <p class="card-text text-muted mb-1">Exemplos práticos de Navbar, Cards, Botões, Accordion, Alerts, Modals e outros componentes essenciais do Bootstrap 5.</p>
+            <ul class="mb-0 small">
+              <li>Navbar fixa e responsiva</li>
+              <li>Cards com imagens e ações</li>
+              <li>Botões customizados</li>
+              <li>Accordion e Alerts interativos</li>
+              <li>Modals com inicialização JS</li>
+            </ul>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col">
+      <a href="utilities.html" class="text-decoration-none">
+        <div class="card h-100 border-info border-2">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-tools me-1 text-info"></i>Utilitários</h5>
+            <p class="card-text text-muted mb-1">Demonstração dos utilitários de espaçamento, tipografia, display, cores, helpers e playground de classes do Bootstrap.</p>
+            <ul class="mb-0 small">
+              <li>Espaçamento (margin/padding)</li>
+              <li>Tipografia e alinhamento</li>
+              <li>Display e visibilidade</li>
+              <li>Cores utilitárias</li>
+              <li>Playground interativo</li>
+            </ul>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col">
+      <a href="forms.html" class="text-decoration-none">
+        <div class="card h-100 border-warning border-2">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-ui-checks-grid me-1 text-warning"></i>Formulários</h5>
+            <p class="card-text text-muted mb-1">Campos de entrada, layout de formulários, validação visual e via JavaScript, além de um exemplo completo de contato.</p>
+            <ul class="mb-0 small">
+              <li>Inputs, selects e checkboxes</li>
+              <li>Layout responsivo de forms</li>
+              <li>Validação visual e JS</li>
+              <li>Formulário de contato funcional</li>
+            </ul>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col">
+      <a href="plugins.html" class="text-decoration-none">
+        <div class="card h-100 border-danger border-2">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-lightning-charge-fill me-1 text-danger"></i>Plugins JS</h5>
+            <p class="card-text text-muted mb-1">Exemplos de uso dos principais plugins JavaScript do Bootstrap: Modal, Tooltip, Toast, Offcanvas, Collapse e Carousel.</p>
+            <ul class="mb-0 small">
+              <li>Modal customizado</li>
+              <li>Tooltips e Popovers</li>
+              <li>Toasts dinâmicos</li>
+              <li>Offcanvas lateral</li>
+              <li>Collapse e Carousel</li>
+            </ul>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col">
+      <a href="theming.html" class="text-decoration-none">
+        <div class="card h-100 border-dark border-2">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-palette-fill me-1 text-dark"></i>Theming</h5>
+            <p class="card-text text-muted mb-1">Personalização de temas: Light/Dark, variáveis CSS, customização de cores e overrides seguros no Bootstrap 5.</p>
+            <ul class="mb-0 small">
+              <li>Alternância Light/Dark</li>
+              <li>Variáveis CSS customizadas</li>
+              <li>Override de cores</li>
+              <li>Exemplo de personalização</li>
+            </ul>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="alert alert-primary mt-4">
+    <i class="bi bi-arrow-right-circle me-1"></i>
+    Todas as páginas estão interligadas pelo menu fixo e pelos links acima. Clique em qualquer cartão ou item do sumário para navegar diretamente para o conteúdo desejado.
+  </div>
+</section>
+    
+
+<section class="mt-5">
+  <h2 class="h4 mb-3"><i class="bi bi-list-ul me-1"></i>Sumário das Páginas</h2>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <a href="components.html" class="text-decoration-none">
+        <i class="bi bi-box-seam me-1 text-success"></i>
+        Componentes
+      </a>
+      <span class="text-muted small ms-2">Navbar, cards, buttons, accordion, alerts, modals e mais.</span>
+    </li>
+    <li class="list-group-item">
+      <a href="utilities.html" class="text-decoration-none">
+        <i class="bi bi-tools me-1 text-info"></i>
+        Utilitários
+      </a>
+      <span class="text-muted small ms-2">Espaçamento, tipografia, display, cores, helpers e playground.</span>
+    </li>
+    <li class="list-group-item">
+      <a href="forms.html" class="text-decoration-none">
+        <i class="bi bi-ui-checks-grid me-1 text-warning"></i>
+        Formulários
+      </a>
+      <span class="text-muted small ms-2">Campos, layout, validação visual e JS, exemplo de contato.</span>
+    </li>
+    <li class="list-group-item">
+      <a href="plugins.html" class="text-decoration-none">
+        <i class="bi bi-lightning-charge-fill me-1 text-danger"></i>
+        Plugins JS
+      </a>
+      <span class="text-muted small ms-2">Modal, tooltip, toast, offcanvas, collapse, carousel e JS.</span>
+    </li>
+    <li class="list-group-item">
+      <a href="theming.html" class="text-decoration-none">
+        <i class="bi bi-palette-fill me-1 text-dark"></i>
+        Theming
+      </a>
+      <span class="text-muted small ms-2">Light/Dark, CSS variables, personalização de cores.</span>
+    </li>
+  </ul>
+  <div class="alert alert-secondary mt-4 mb-0">
+    <i class="bi bi-info-circle me-1"></i>
+    Todas as páginas acima já estão disponíveis para navegação. Explore cada uma para exemplos práticos e dicas!
+  </div>
+</section>
+
+<footer class="bg-light text-center py-3 mt-5 border-top small">
+  <span>Feito com <span aria-label="amor" class="text-danger">♥</span> usando Bootstrap 5.x. &copy; HenriqueDEV-code - 2024</span>
+  <span class="ms-2"><a href="#topo" class="text-decoration-none" id="footerTopo">Voltar ao topo</a></span>
+</footer>
+
+<!-- Bootstrap Bundle (JS + Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<!-- Scripts customizados: inicialização de plugins, theme toggle, scrollspy, etc. -->
+<script src="scripts.js"></script>
+</body>
+</html>

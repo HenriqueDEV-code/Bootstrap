@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Formulários — Bootstrap 5 Guia Didático</title>
+  <meta name="description" content="Exemplos práticos de formulários com Bootstrap 5: inputs, selects, checkboxes, layout responsivo, validação visual e via JavaScript.">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNavbar" data-bs-offset="80" tabindex="0">
+<nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow-sm" aria-label="Navegação principal">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="index.html">
+      <span class="text-light"><i class="bi bi-bootstrap-fill me-1"></i>Bootstrap 5 Guia</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+      aria-controls="navbarContent" aria-expanded="false" aria-label="Alternar navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="grid.html">Grid</a></li>
+        <li class="nav-item"><a class="nav-link" href="components.html">Componentes</a></li>
+        <li class="nav-item"><a class="nav-link" href="utilities.html">Utilitários</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="forms.html">Formulários</a></li>
+        <li class="nav-item"><a class="nav-link" href="plugins.html">Plugins JS</a></li>
+        <li class="nav-item"><a class="nav-link" href="theming.html">Theming</a></li>
+      </ul>
+      <button id="themeToggle" class="btn btn-outline-light btn-sm me-2" aria-label="Alternar tema">
+        <span class="bi bi-moon"></span> <span class="d-none d-lg-inline">Tema</span>
+      </button>
+      <a href="#topo" class="btn btn-light btn-sm visually-hidden-focusable" id="voltarTopo" aria-label="Voltar ao topo">↑ Topo</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container-lg py-5" id="topo">
+  <section id="introducao" class="pt-5 mt-4">
+    <h1 class="display-5 fw-bold mb-3"><i class="bi bi-ui-checks-grid me-1 text-warning"></i>Formulários no Bootstrap 5</h1>
+    <p class="lead">Crie formulários bonitos, responsivos e acessíveis com facilidade usando as classes do Bootstrap 5. Veja exemplos de campos, layout, validação visual e integração com JavaScript.</p>
+    <div class="alert alert-info" role="alert">
+      <strong>Dica:</strong> Todos os exemplos abaixo são <span class="fw-bold">copiáveis</span> e funcionam direto no seu projeto!
+    </div>
+  </section>
+
+  <section id="campos-basicos" class="pt-5">
+    <h2 class="h3 mb-3">Campos básicos de formulário</h2>
+    <form>
+      <div class="mb-3">
+        <label for="inputNome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="inputNome" placeholder="Seu nome">
+      </div>
+      <div class="mb-3">
+        <label for="inputEmail" class="form-label">E-mail</label>
+        <input type="email" class="form-control" id="inputEmail" placeholder="nome@exemplo.com">
+      </div>
+      <div class="mb-3">
+        <label for="inputSenha" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="inputSenha" placeholder="Senha">
+      </div>
+      <div class="mb-3">
+        <label for="selectCidade" class="form-label">Cidade</label>
+        <select class="form-select" id="selectCidade">
+          <option selected>Escolha...</option>
+          <option>São Paulo</option>
+          <option>Rio de Janeiro</option>
+          <option>Belo Horizonte</option>
+        </select>
+      </div>
+      <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="checkTermos">
+        <label class="form-check-label" for="checkTermos">Aceito os termos</label>
+      </div>
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
+    <div class="alert alert-secondary mt-4 mb-0">
+      <i class="bi bi-info-circle me-1"></i>
+      Use <code>.form-control</code> para inputs, <code>.form-select</code> para selects e <code>.form-check</code> para checkboxes/radios.
+    </div>
+  </section>
+
+  <section id="layout" class="pt-5">
+    <h2 class="h3 mb-3">Layout de formulários</h2>
+    <p>O Bootstrap facilita a criação de formulários em linha, colunas ou responsivos:</p>
+    <form class="row g-3">
+      <div class="col-md-6">
+        <label for="inputEmail2" class="form-label">E-mail</label>
+        <input type="email" class="form-control" id="inputEmail2" placeholder="nome@exemplo.com">
+      </div>
+      <div class="col-md-6">
+        <label for="inputSenha2" class="form-label">Senha</label>
+        <input type="password" class="form-control" id="inputSenha2" placeholder="Senha">
+      </div>
+      <div class="col-12">
+        <label for="inputEndereco" class="form-label">Endereço</label>
+        <input type="text" class="form-control" id="inputEndereco" placeholder="Rua, número, bairro">
+      </div>
+      <div class="col-md-6">
+        <label for="inputCidade2" class="form-label">Cidade</label>
+        <input type="text" class="form-control" id="inputCidade2">
+      </div>
+      <div class="col-md-4">
+        <label for="inputEstado" class="form-label">Estado</label>
+        <select id="inputEstado" class="form-select">
+          <option selected>Escolha...</option>
+          <option>SP</option>
+          <option>RJ</option>
+          <option>MG</option>
+        </select>
+      </div>
+      <div class="col-md-2">
+        <label for="inputCEP" class="form-label">CEP</label>
+        <input type="text" class="form-control" id="inputCEP">
+      </div>
+      <div class="col-12">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck">
+          <label class="form-check-label" for="gridCheck">
+            Lembrar-me
+          </label>
+        </div>
+      </div>
+      <div class="col-12">
+        <button type="submit" class="btn btn-success">Cadastrar</button>
+      </div>
+    </form>
+    <div class="alert alert-warning mt-4 mb-0">
+      <i class="bi bi-exclamation-triangle me-1"></i>
+      Use <code>.row</code> e <code>.col-*</code> para criar layouts responsivos de formulário.
+    </div>
+  </section>
+
+  <section id="validacao" class="pt-5">
+    <h2 class="h3 mb-3">Validação visual e via JavaScript</h2>
+    <p>O Bootstrap oferece feedback visual para campos válidos/inválidos. Combine com JS para validação real:</p>
+    <form class="needs-validation" novalidate id="formValidacao">
+      <div class="mb-3">
+        <label for="inputNomeVal" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="inputNomeVal" required>
+        <div class="valid-feedback">
+          Tudo certo!
+        </div>
+        <div class="invalid-feedback">
+          Por favor, preencha o nome.
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="inputEmailVal" class="form-label">E-mail</label>
+        <input type="email" class="form-control" id="inputEmailVal" required>
+        <div class="invalid-feedback">
+          Informe um e-mail válido.
+        </div>
+      </div>
+      <button class="btn btn-primary" type="submit">Validar</button>
+    </form>
+    <div class="alert alert-info mt-4 mb-0">
+      <i class="bi bi-lightbulb me-1"></i>
+      Adicione <code>novalidate</code> ao <code>&lt;form&gt;</code> e use JS para ativar a validação customizada.
+    </div>
+    <script>
+      // Validação Bootstrap 5
+      (() => {
+        'use strict';
+        const forms = document.querySelectorAll('.needs-validation');
+        Array.from(forms).forEach(form => {
+          form.addEventListener('submit', event => {
+            if (!form.checkValidity()) {
+              event.preventDefault();
+              event.stopPropagation();
+            }
+            form.classList.add('was-validated');
+          }, false);
+        });
+      })();
+    </script>
+  </section>
+
+  <section id="exemplo-contato" class="pt-5">
+    <h2 class="h3 mb-3">Exemplo completo: Formulário de Contato</h2>
+    <form class="row g-3 needs-validation" novalidate>
+      <div class="col-md-6">
+        <label for="contatoNome" class="form-label">Nome</label>
+        <input type="text" class="form-control" id="contatoNome" required>
+        <div class="invalid-feedback">
+          Informe seu nome.
+        </div>
+      </div>
+      <div class="col-md-6">
+        <label for="contatoEmail" class="form-label">E-mail</label>
+        <input type="email" class="form-control" id="contatoEmail" required>
+        <div class="invalid-feedback">
+          Informe um e-mail válido.
+        </div>
+      </div>
+      <div class="col-12">
+        <label for="contatoMensagem" class="form-label">Mensagem</label>
+        <textarea class="form-control" id="contatoMensagem" rows="4" required></textarea>
+        <div class="invalid-feedback">
+          Escreva sua mensagem.
+        </div>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-warning" type="submit">Enviar Mensagem</button>
+      </div>
+    </form>
+    <div class="alert alert-success mt-4 mb-0">
+      <i class="bi bi-check-circle me-1"></i>
+      Pronto! Este é um exemplo de formulário de contato validado visualmente.
+    </div>
+  </section>
+
+  <section class="mt-5">
+    <h2 class="h4 mb-3"><i class="bi bi-link-45deg me-1"></i>Páginas Relacionadas</h2>
+    <div class="row row-cols-1 row-cols-md-3 g-4">
+      <div class="col">
+        <a href="components.html" class="card h-100 text-decoration-none border-success border-2">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-box-seam me-1 text-success"></i>Componentes</h5>
+            <p class="card-text text-muted mb-1">Navbar, cards, buttons, accordion, alerts, modals e mais.</p>
+          </div>
+        </a>
+      </div>
+      <div class="col">
+        <a href="utilities.html" class="card h-100 text-decoration-none border-info border-2">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-tools me-1 text-info"></i>Utilitários</h5>
+            <p class="card-text text-muted mb-1">Espaçamento, tipografia, display, cores, helpers e playground.</p>
+          </div>
+        </a>
+      </div>
+      <div class="col">
+        <a href="plugins.html" class="card h-100 text-decoration-none border-danger border-2">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-lightning-charge-fill me-1 text-danger"></i>Plugins JS</h5>
+            <p class="card-text text-muted mb-1">Modal, tooltip, toast, offcanvas, collapse, carousel e JS.</p>
+          </div>
+        </a>
+      </div>
+    </div>
+    <div class="alert alert-secondary mt-4 mb-0">
+      <i class="bi bi-info-circle me-1"></i>
+      Explore as outras páginas do guia para exemplos práticos e dicas!
+    </div>
+  </section>
+</main>
+
+<footer class="bg-light text-center py-3 mt-5 border-top small">
+  <span>Feito com <span aria-label="amor" class="text-danger">♥</span> usando Bootstrap 5.x. &copy; HenriqueDEV-code - 2024</span>
+  <span class="ms-2"><a href="#topo" class="text-decoration-none" id="footerTopo">Voltar ao topo</a></span>
+</footer>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<script src="scripts.js"></script>
+</body>
+</html>

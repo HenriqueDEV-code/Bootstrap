@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="pt-br" data-bs-theme="light">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Componentes | Bootstrap 5 Guia Didático</title>
+  <meta name="description" content="Exemplos práticos de componentes Bootstrap 5.x em português: Navbar, Cards, Botões, Accordion, Alerts, Modals e mais.">
+  <!-- Bootstrap 5.x via CDN -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/css/bootstrap.min.css" rel="stylesheet" crossorigin="anonymous">
+  <!-- Bootstrap Icons via CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <!-- Estilos customizados -->
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-bs-spy="scroll" data-bs-target="#mainNavbar" data-bs-offset="80" tabindex="0">
+<!-- Navbar fixa, responsiva, com collapse no mobile e Scrollspy -->
+<nav id="mainNavbar" class="navbar navbar-expand-lg navbar-dark bg-primary fixed-top shadow-sm" aria-label="Navegação principal">
+  <div class="container-fluid">
+    <a class="navbar-brand fw-bold" href="index.html">
+      <span class="text-light"><i class="bi bi-bootstrap-fill me-1"></i>Bootstrap 5 Guia</span>
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarContent"
+      aria-controls="navbarContent" aria-expanded="false" aria-label="Alternar navegação">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarContent">
+      <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+        <li class="nav-item"><a class="nav-link" href="index.html">Início</a></li>
+        <li class="nav-item"><a class="nav-link" href="grid.html">Grid</a></li>
+        <li class="nav-item"><a class="nav-link active" aria-current="page" href="components.html">Componentes</a></li>
+        <li class="nav-item"><a class="nav-link" href="utilities.html">Utilitários</a></li>
+        <li class="nav-item"><a class="nav-link" href="forms.html">Formulários</a></li>
+        <li class="nav-item"><a class="nav-link" href="plugins.html">Plugins JS</a></li>
+        <li class="nav-item"><a class="nav-link" href="theming.html">Theming</a></li>
+      </ul>
+      <button id="themeToggle" class="btn btn-outline-light btn-sm me-2" aria-label="Alternar tema">
+        <span class="bi bi-moon"></span> <span class="d-none d-lg-inline">Tema</span>
+      </button>
+      <a href="#topo" class="btn btn-light btn-sm visually-hidden-focusable" id="voltarTopo" aria-label="Voltar ao topo">↑ Topo</a>
+    </div>
+  </div>
+</nav>
+
+<main class="container-lg py-5" id="topo">
+  <!-- Introdução -->
+  <section id="introducao" class="pt-5 mt-4">
+    <h1 class="display-4 fw-bold mb-3">Componentes do Bootstrap 5</h1>
+    <p class="lead">Explore exemplos práticos e manipuláveis dos principais componentes do Bootstrap 5.x. Veja como usar Navbar, Cards, Botões, Accordion, Alerts, Modals e muito mais!</p>
+    <div class="alert alert-info" role="alert">
+      <strong>O que são componentes?</strong><br>
+      Componentes são blocos prontos de interface (UI) que facilitam a criação de layouts modernos, responsivos e acessíveis, apenas usando classes CSS e, em alguns casos, plugins JS.
+    </div>
+    <ul>
+      <li>Prontos para uso e personalização</li>
+      <li>Responsivos e acessíveis</li>
+      <li>Fáceis de combinar e estender</li>
+      <li>Documentação e exemplos abundantes</li>
+    </ul>
+    <div class="row g-3 mt-2">
+      <div class="col-md-6">
+        <div class="alert alert-success mb-0">
+          <i class="bi bi-check-circle-fill me-1"></i>
+          <strong>Vantagens:</strong>
+          <ul class="mb-0">
+            <li>Economia de tempo no desenvolvimento</li>
+            <li>Consistência visual garantida</li>
+            <li>Comportamento responsivo nativo</li>
+            <li>Plugins JS integrados (modals, toasts, etc.)</li>
+          </ul>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="alert alert-warning mb-0">
+          <i class="bi bi-exclamation-triangle-fill me-1"></i>
+          <strong>Fique atento:</strong>
+          <ul class="mb-0">
+            <li>Personalize para evitar visual "genérico"</li>
+            <li>Alguns componentes requerem JS para interatividade</li>
+            <li>Adapte para acessibilidade máxima</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Exemplos de Componentes -->
+  <section id="exemplos" class="pt-5">
+    <h2 class="h3 mb-3">Exemplos Práticos</h2>
+    <div class="row row-cols-1 row-cols-md-2 g-4">
+      <!-- Navbar -->
+      <div class="col">
+        <div class="card h-100 border-primary border-2">
+          <div class="card-body">
+            <h3 class="h5 card-title"><i class="bi bi-menu-button-wide me-1 text-primary"></i>Navbar</h3>
+            <p class="card-text text-muted">Barra de navegação responsiva, com collapse no mobile e suporte a temas.</p>
+            <nav class="navbar navbar-expand-lg navbar-light bg-light rounded shadow-sm mb-2">
+              <div class="container-fluid">
+                <a class="navbar-brand" href="#">Logo</a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#demoNavbar" aria-controls="demoNavbar" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="demoNavbar">
+                  <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+                    <li class="nav-item"><a class="nav-link active" aria-current="page" href="#">Início</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Recursos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#">Contato</a></li>
+                  </ul>
+                  <form class="d-flex" role="search">
+                    <input class="form-control me-2" type="search" placeholder="Buscar" aria-label="Buscar">
+                    <button class="btn btn-outline-primary" type="submit">Buscar</button>
+                  </form>
+                </div>
+              </div>
+            </nav>
+            <small class="text-muted">Totalmente responsiva e personalizável.</small>
+          </div>
+        </div>
+      </div>
+      <!-- Card -->
+      <div class="col">
+        <div class="card h-100 border-success border-2">
+          <div class="card-body">
+            <h3 class="h5 card-title"><i class="bi bi-box-seam me-1 text-success"></i>Card</h3>
+            <p class="card-text text-muted">Bloco flexível para conteúdo, imagens, ações e muito mais.</p>
+            <div class="card mb-2 shadow-sm">
+              <img src="https://picsum.photos/400/160?random=1" class="card-img-top" alt="Exemplo de imagem">
+              <div class="card-body">
+                <h5 class="card-title">Título do Card</h5>
+                <p class="card-text">Cards são ótimos para destacar informações, produtos ou ações.</p>
+                <a href="#" class="btn btn-success btn-sm">Ação</a>
+              </div>
+            </div>
+            <small class="text-muted">Cards responsivos e fáceis de alinhar.</small>
+          </div>
+        </div>
+      </div>
+      <!-- Botões -->
+      <div class="col">
+        <div class="card h-100 border-info border-2">
+          <div class="card-body">
+            <h3 class="h5 card-title"><i class="bi bi-toggle-on me-1 text-info"></i>Botões</h3>
+            <p class="card-text text-muted">Vários estilos, tamanhos e estados para ações rápidas.</p>
+            <div class="mb-2">
+              <button class="btn btn-primary me-1">Primário</button>
+              <button class="btn btn-outline-secondary me-1">Secundário</button>
+              <button class="btn btn-success btn-sm me-1">Pequeno</button>
+              <button class="btn btn-danger btn-lg">Grande</button>
+            </div>
+            <small class="text-muted">Use <code>.btn</code> e variantes para personalizar.</small>
+          </div>
+        </div>
+      </div>
+      <!-- Accordion -->
+      <div class="col">
+        <div class="card h-100 border-warning border-2">
+          <div class="card-body">
+            <h3 class="h5 card-title"><i class="bi bi-arrows-collapse me-1 text-warning"></i>Accordion</h3>
+            <p class="card-text text-muted">Exiba/oculte conteúdo de forma interativa e compacta.</p>
+            <div class="accordion mb-2" id="demoAccordion">
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingOne">
+                  <button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+                    Item 1
+                  </button>
+                </h2>
+                <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#demoAccordion">
+                  <div class="accordion-body">
+                    Conteúdo do primeiro item.
+                  </div>
+                </div>
+              </div>
+              <div class="accordion-item">
+                <h2 class="accordion-header" id="headingTwo">
+                  <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    Item 2
+                  </button>
+                </h2>
+                <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#demoAccordion">
+                  <div class="accordion-body">
+                    Conteúdo do segundo item.
+                  </div>
+                </div>
+              </div>
+            </div>
+            <small class="text-muted">Ideal para FAQs e listas expansíveis.</small>
+          </div>
+        </div>
+      </div>
+      <!-- Alert -->
+      <div class="col">
+        <div class="card h-100 border-danger border-2">
+          <div class="card-body">
+            <h3 class="h5 card-title"><i class="bi bi-exclamation-triangle-fill me-1 text-danger"></i>Alert</h3>
+            <p class="card-text text-muted">Mensagens de destaque para avisos, erros ou sucesso.</p>
+            <div class="alert alert-warning alert-dismissible fade show mb-2" role="alert">
+              <strong>Atenção!</strong> Este é um alerta de exemplo.
+              <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Fechar"></button>
+            </div>
+            <small class="text-muted">Use <code>.alert</code> e variantes de cor.</small>
+          </div>
+        </div>
+      </div>
+      <!-- Modal -->
+      <div class="col">
+        <div class="card h-100 border-dark border-2">
+          <div class="card-body">
+            <h3 class="h5 card-title"><i class="bi bi-window me-1 text-dark"></i>Modal</h3>
+            <p class="card-text text-muted">Caixa de diálogo sobreposta para avisos, formulários ou confirmações.</p>
+            <button type="button" class="btn btn-dark mb-2" data-bs-toggle="modal" data-bs-target="#demoModal">
+              Abrir Modal
+            </button>
+            <div class="modal fade" id="demoModal" tabindex="-1" aria-labelledby="demoModalLabel" aria-hidden="true">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h5 class="modal-title" id="demoModalLabel">Título do Modal</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Fechar"></button>
+                  </div>
+                  <div class="modal-body">
+                    Este é um exemplo de modal Bootstrap.
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+                    <button type="button" class="btn btn-primary">Salvar mudanças</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <small class="text-muted">Requer JS do Bootstrap para funcionar.</small>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="alert alert-info mt-4">
+      <i class="bi bi-bookmark-star me-1"></i>
+      <strong>Dica:</strong> Veja a <a href="https://getbootstrap.com/docs/5.3/components/" target="_blank" rel="noopener">documentação oficial</a> para mais componentes e exemplos avançados!
+    </div>
+  </section>
+</main>
+
+<section class="mt-5">
+  <h2 class="h4 mb-3"><i class="bi bi-link-45deg me-1"></i>Páginas Disponíveis</h2>
+  <div class="row row-cols-1 row-cols-md-3 g-4">
+    <div class="col">
+      <a href="components.html" class="text-decoration-none">
+        <div class="card h-100 border-success border-2">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-box-seam me-1 text-success"></i>Componentes</h5>
+            <p class="card-text text-muted mb-1">Exemplos práticos de Navbar, Cards, Botões, Accordion, Alerts, Modals e outros componentes essenciais do Bootstrap 5.</p>
+            <ul class="mb-0 small">
+              <li>Navbar fixa e responsiva</li>
+              <li>Cards com imagens e ações</li>
+              <li>Botões customizados</li>
+              <li>Accordion e Alerts interativos</li>
+              <li>Modals com inicialização JS</li>
+            </ul>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col">
+      <a href="utilities.html" class="text-decoration-none">
+        <div class="card h-100 border-info border-2">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-tools me-1 text-info"></i>Utilitários</h5>
+            <p class="card-text text-muted mb-1">Demonstração dos utilitários de espaçamento, tipografia, display, cores, helpers e playground de classes do Bootstrap.</p>
+            <ul class="mb-0 small">
+              <li>Espaçamento (margin/padding)</li>
+              <li>Tipografia e alinhamento</li>
+              <li>Display e visibilidade</li>
+              <li>Cores utilitárias</li>
+              <li>Playground interativo</li>
+            </ul>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col">
+      <a href="forms.html" class="text-decoration-none">
+        <div class="card h-100 border-warning border-2">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-ui-checks-grid me-1 text-warning"></i>Formulários</h5>
+            <p class="card-text text-muted mb-1">Campos de entrada, layout de formulários, validação visual e via JavaScript, além de um exemplo completo de contato.</p>
+            <ul class="mb-0 small">
+              <li>Inputs, selects e checkboxes</li>
+              <li>Layout responsivo de forms</li>
+              <li>Validação visual e JS</li>
+              <li>Formulário de contato funcional</li>
+            </ul>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col">
+      <a href="plugins.html" class="text-decoration-none">
+        <div class="card h-100 border-danger border-2">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-lightning-charge-fill me-1 text-danger"></i>Plugins JS</h5>
+            <p class="card-text text-muted mb-1">Exemplos de uso dos principais plugins JavaScript do Bootstrap: Modal, Tooltip, Toast, Offcanvas, Collapse e Carousel.</p>
+            <ul class="mb-0 small">
+              <li>Modal customizado</li>
+              <li>Tooltips e Popovers</li>
+              <li>Toasts dinâmicos</li>
+              <li>Offcanvas lateral</li>
+              <li>Collapse e Carousel</li>
+            </ul>
+          </div>
+        </div>
+      </a>
+    </div>
+    <div class="col">
+      <a href="theming.html" class="text-decoration-none">
+        <div class="card h-100 border-dark border-2">
+          <div class="card-body">
+            <h5 class="card-title"><i class="bi bi-palette-fill me-1 text-dark"></i>Theming</h5>
+            <p class="card-text text-muted mb-1">Personalização de temas: Light/Dark, variáveis CSS, customização de cores e overrides seguros no Bootstrap 5.</p>
+            <ul class="mb-0 small">
+              <li>Alternância Light/Dark</li>
+              <li>Variáveis CSS customizadas</li>
+              <li>Override de cores</li>
+              <li>Exemplo de personalização</li>
+            </ul>
+          </div>
+        </div>
+      </a>
+    </div>
+  </div>
+  <div class="alert alert-primary mt-4">
+    <i class="bi bi-arrow-right-circle me-1"></i>
+    Todas as páginas estão interligadas pelo menu fixo e pelos links acima. Clique em qualquer cartão ou item do sumário para navegar diretamente para o conteúdo desejado.
+  </div>
+</section>
+
+<section class="mt-5">
+  <h2 class="h4 mb-3"><i class="bi bi-list-ul me-1"></i>Sumário das Páginas</h2>
+  <ul class="list-group list-group-flush">
+    <li class="list-group-item">
+      <a href="components.html" class="text-decoration-none">
+        <i class="bi bi-box-seam me-1 text-success"></i>
+        Componentes
+      </a>
+      <span class="text-muted small ms-2">Navbar, cards, buttons, accordion, alerts, modals e mais.</span>
+    </li>
+    <li class="list-group-item">
+      <a href="utilities.html" class="text-decoration-none">
+        <i class="bi bi-tools me-1 text-info"></i>
+        Utilitários
+      </a>
+      <span class="text-muted small ms-2">Espaçamento, tipografia, display, cores, helpers e playground.</span>
+    </li>
+    <li class="list-group-item">
+      <a href="forms.html" class="text-decoration-none">
+        <i class="bi bi-ui-checks-grid me-1 text-warning"></i>
+        Formulários
+      </a>
+      <span class="text-muted small ms-2">Campos, layout, validação visual e JS, exemplo de contato.</span>
+    </li>
+    <li class="list-group-item">
+      <a href="plugins.html" class="text-decoration-none">
+        <i class="bi bi-lightning-charge-fill me-1 text-danger"></i>
+        Plugins JS
+      </a>
+      <span class="text-muted small ms-2">Modal, tooltip, toast, offcanvas, collapse, carousel e JS.</span>
+    </li>
+    <li class="list-group-item">
+      <a href="theming.html" class="text-decoration-none">
+        <i class="bi bi-palette-fill me-1 text-dark"></i>
+        Theming
+      </a>
+      <span class="text-muted small ms-2">Light/Dark, CSS variables, personalização de cores.</span>
+    </li>
+  </ul>
+  <div class="alert alert-secondary mt-4 mb-0">
+    <i class="bi bi-info-circle me-1"></i>
+    Todas as páginas acima já estão disponíveis para navegação. Explore cada uma para exemplos práticos e dicas!
+  </div>
+</section>
+
+<footer class="bg-light text-center py-3 mt-5 border-top small">
+  <span>Feito com <span aria-label="amor" class="text-danger">♥</span> usando Bootstrap 5.x. &copy; HenriqueDEV-code - 2024</span>
+  <span class="ms-2"><a href="#topo" class="text-decoration-none" id="footerTopo">Voltar ao topo</a></span>
+</footer>
+
+<!-- Bootstrap Bundle (JS + Popper) -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.8/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+<!-- Scripts customizados: inicialização de plugins, theme toggle, scrollspy, etc. -->
+<script src="scripts.js"></script>
+</body>
+</html>
