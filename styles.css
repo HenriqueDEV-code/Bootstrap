@@ -1,0 +1,16 @@
+/*
+  Estilos customizados (leves) para complementar o Bootstrap.
+  Mantém o projeto funcional mesmo sem build pipeline.
+*/
+
+/* Navbar fixa: evita que o conteúdo fique "embaixo" dela */
+body {
+  padding-top: 4.5rem;
+}
+
+/* Melhor leitura em telas grandes */
+main.container-lg {
+  scroll-margin-top: 5rem;
+}
+
+
